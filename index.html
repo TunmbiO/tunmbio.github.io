@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tunmbi Okediran | ML & Quant Portfolio</title>
+  <meta name="description" content="Portfolio website for ML, finance, and quant projects." />
+  <style>
+    :root {
+      --bg: #0b1020;
+      --bg-soft: #121933;
+      --card: #161f3f;
+      --text: #eef2ff;
+      --muted: #b8c0e0;
+      --accent: #7aa2ff;
+      --accent-2: #8ef0d1;
+      --border: rgba(255,255,255,0.08);
+      --shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+      --maxw: 1080px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: linear-gradient(180deg, #0a0f1f 0%, #0d1328 100%);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(calc(100% - 2rem), var(--maxw));
+      margin: 0 auto;
+    }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(10px);
+      background: rgba(10, 15, 31, 0.75);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 0;
+      gap: 1rem;
+    }
+
+    .brand {
+      font-weight: 800;
+      letter-spacing: 0.2px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .nav-links a:hover,
+    .brand:hover {
+      color: var(--text);
+    }
+
+    .hero {
+      padding: 5rem 0 3rem;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.35fr 0.85fr;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      color: var(--accent-2);
+      font-size: 0.9rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 0.8rem;
+    }
+
+    h1 {
+      font-size: clamp(2.4rem, 5vw, 4.4rem);
+      line-height: 1.05;
+      margin: 0 0 1rem;
+      letter-spacing: -0.04em;
+    }
+
+    .hero p {
+      font-size: 1.08rem;
+      color: var(--muted);
+      max-width: 680px;
+      margin: 0 0 1.5rem;
+    }
+
+    .actions {
+      display: flex;
+      gap: 0.9rem;
+      flex-wrap: wrap;
+      margin-bottom: 1.2rem;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.9rem 1.15rem;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      font-weight: 700;
+      transition: 0.2s ease;
+    }
+
+    .button-primary {
+      background: linear-gradient(135deg, var(--accent), #9a86ff);
+      color: #08101f;
+    }
+
+    .button-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: var(--shadow);
+    }
+
+    .button-secondary {
+      background: rgba(255,255,255,0.03);
+      border-color: var(--border);
+      color: var(--text);
+    }
+
+    .button-secondary:hover {
+      background: rgba(255,255,255,0.06);
+    }
+
+    .quick-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      color: var(--muted);
+      font-size: 0.96rem;
+    }
+
+    .quick-links a:hover {
+      color: var(--accent-2);
+    }
+
+    .portrait-card {
+      background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));
+      border: 1px solid var(--border);
+      border-radius: 28px;
+      padding: 1rem;
+      box-shadow: var(--shadow);
+    }
+
+    .portrait {
+      width: 100%;
+      aspect-ratio: 4 / 5;
+      object-fit: cover;
+      border-radius: 22px;
+      display: block;
+      background: #1a2343;
+    }
+
+    .section {
+      padding: 2.6rem 0;
+    }
+
+    .section-title {
+      font-size: 1.6rem;
+      margin: 0 0 0.4rem;
+      letter-spacing: -0.03em;
+    }
+
+    .section-subtitle {
+      color: var(--muted);
+      margin: 0 0 1.4rem;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1rem;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem;
+    }
+
+    .card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 1.2rem;
+      box-shadow: var(--shadow);
+    }
+
+    .card h3 {
+      margin: 0 0 0.6rem;
+      font-size: 1.15rem;
+    }
+
+    .card p {
+      margin: 0 0 0.9rem;
+      color: var(--muted);
+      font-size: 0.98rem;
+    }
+
+    .tag-list {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      margin-bottom: 1rem;
+    }
+
+    .tag {
+      padding: 0.38rem 0.7rem;
+      border-radius: 999px;
+      background: rgba(122,162,255,0.12);
+      border: 1px solid rgba(122,162,255,0.18);
+      color: #dbe5ff;
+      font-size: 0.84rem;
+      font-weight: 600;
+    }
+
+    .project-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      font-weight: 700;
+      font-size: 0.95rem;
+    }
+
+    .project-links a {
+      color: var(--accent-2);
+    }
+
+    .project-links a:hover {
+      color: var(--text);
+    }
+
+    .skill-group h3 {
+      margin-top: 0;
+      margin-bottom: 0.75rem;
+    }
+
+    .skill-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+    }
+
+    .skill-pill {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 0.5rem 0.8rem;
+      color: var(--text);
+      font-size: 0.92rem;
+    }
+
+    .cta {
+      margin: 2.5rem 0 4rem;
+    }
+
+    .cta .card {
+      padding: 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    footer {
+      padding: 0 0 2.5rem;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 900px) {
+      .hero-grid,
+      .grid-3,
+      .grid-2 {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding-top: 3.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <div class="container nav-inner">
+      <a class="brand" href="#top">Tunmbi Okediran</a>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <main id="top">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <span class="eyebrow">ML • Quant • Finance</span>
+          <h1>Building machine learning projects for finance and real-world decision systems.</h1>
+          <p>
+            I’m Tunmbi Okediran, a PhD student in Financial Services Analytics with a strong interest in applied machine learning,
+            deep learning, financial modeling, and production-style analytics. This portfolio highlights projects that are most relevant
+            for quant, applied ML, and data-driven finance roles.
+          </p>
+          <div class="actions">
+            <a class="button button-primary" href="assets/Tunmbi_Okediran_Resume.pdf" target="_blank" rel="noopener noreferrer">View Resume</a>
+            <a class="button button-secondary" href="#projects">See Projects</a>
+          </div>
+          <div class="quick-links">
+            <a href="https://www.linkedin.com/in/your-linkedin-here/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            <a href="https://github.com/your-github-username" target="_blank" rel="noopener noreferrer">GitHub</a>
+            <a href="mailto:yourname@email.com">Email</a>
+          </div>
+        </div>
+
+        <div class="portrait-card">
+          <img class="portrait" src="assets/profile.jpg" alt="Portrait of Tunmbi Okediran" />
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="section">
+      <div class="container">
+        <h2 class="section-title">About</h2>
+        <p class="section-subtitle">
+          A concise intro that tells recruiters what you do and what kinds of roles you are targeting.
+        </p>
+        <div class="card">
+          <p>
+            I work at the intersection of machine learning, statistics, and finance. My projects focus on topics such as predictive modeling,
+            portfolio-related ML workflows, time-series forecasting, and model evaluation. I enjoy building clear, reproducible projects that combine
+            solid methodology with practical implementation in Python.
+          </p>
+          <p>
+            I’m especially interested in quant research, applied ML, model risk, and decision-focused analytics roles where strong statistical reasoning,
+            coding, and experimentation matter.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects" class="section">
+      <div class="container">
+        <h2 class="section-title">Featured Projects</h2>
+        <p class="section-subtitle">
+          Keep this section to your strongest 3–5 projects. For each one, explain the problem, the method, and the result or deliverable.
+        </p>
+
+        <div class="grid-3">
+          <article class="card">
+            <h3>ML Portfolio Allocation</h3>
+            <p>
+              Built a return and volatility prediction workflow using Python-based machine learning models for portfolio allocation, with time-aware validation and out-of-sample evaluation.
+            </p>
+            <div class="tag-list">
+              <span class="tag">Python</span>
+              <span class="tag">scikit-learn</span>
+              <span class="tag">Time Series</span>
+              <span class="tag">Finance</span>
+            </div>
+            <div class="project-links">
+              <a href="https://github.com/your-github-username/ml-portfolio-allocation" target="_blank" rel="noopener noreferrer">GitHub Repo</a>
+            </div>
+          </article>
+
+          <article class="card">
+            <h3>LSTM Volatility Forecasting</h3>
+            <p>
+              Implemented a deep learning workflow for sequence-based volatility forecasting and compared model behavior against classical time-series baselines.
+            </p>
+            <div class="tag-list">
+              <span class="tag">PyTorch</span>
+              <span class="tag">LSTM</span>
+              <span class="tag">Forecasting</span>
+              <span class="tag">Evaluation</span>
+            </div>
+            <div class="project-links">
+              <a href="https://github.com/your-github-username/lstm-volatility-forecasting" target="_blank" rel="noopener noreferrer">GitHub Repo</a>
+            </div>
+          </article>
+
+          <article class="card">
+            <h3>Credit Risk / Model Governance Toolkit</h3>
+            <p>
+              Developed a production-style monitoring project with data validation, drift checks, performance tracking, threshold governance, and fairness diagnostics.
+            </p>
+            <div class="tag-list">
+              <span class="tag">Monitoring</span>
+              <span class="tag">Calibration</span>
+              <span class="tag">Drift</span>
+              <span class="tag">Risk</span>
+            </div>
+            <div class="project-links">
+              <a href="https://github.com/your-github-username/model-risk-governance" target="_blank" rel="noopener noreferrer">GitHub Repo</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills" class="section">
+      <div class="container">
+        <h2 class="section-title">Skills</h2>
+        <p class="section-subtitle">
+          Keep the skills section tight and recruiter-friendly.
+        </p>
+
+        <div class="grid-2">
+          <div class="card skill-group">
+            <h3>Programming & Tools</h3>
+            <div class="skill-list">
+              <span class="skill-pill">Python</span>
+              <span class="skill-pill">Pandas</span>
+              <span class="skill-pill">NumPy</span>
+              <span class="skill-pill">SQL</span>
+              <span class="skill-pill">Git</span>
+              <span class="skill-pill">Jupyter</span>
+            </div>
+          </div>
+
+          <div class="card skill-group">
+            <h3>Machine Learning</h3>
+            <div class="skill-list">
+              <span class="skill-pill">scikit-learn</span>
+              <span class="skill-pill">PyTorch</span>
+              <span class="skill-pill">Regularized Regression</span>
+              <span class="skill-pill">Tree-Based Models</span>
+              <span class="skill-pill">Deep Learning</span>
+              <span class="skill-pill">Model Evaluation</span>
+            </div>
+          </div>
+
+          <div class="card skill-group">
+            <h3>Finance & Analytics</h3>
+            <div class="skill-list">
+              <span class="skill-pill">Time-Series ML</span>
+              <span class="skill-pill">Portfolio Modeling</span>
+              <span class="skill-pill">Risk Modeling</span>
+              <span class="skill-pill">Cross-Validation</span>
+              <span class="skill-pill">Performance Metrics</span>
+            </div>
+          </div>
+
+          <div class="card skill-group">
+            <h3>What I Build</h3>
+            <div class="skill-list">
+              <span class="skill-pill">End-to-End Projects</span>
+              <span class="skill-pill">Reproducible Workflows</span>
+              <span class="skill-pill">Clear Documentation</span>
+              <span class="skill-pill">Job-Ready Portfolio Pieces</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta">
+      <div class="container">
+        <div class="card">
+          <div>
+            <h2 class="section-title" style="margin-bottom: 0.4rem;">Resume & Contact</h2>
+            <p class="section-subtitle" style="margin-bottom: 0;">
+              Add your resume PDF to the assets folder and update the links below.
+            </p>
+          </div>
+          <div class="actions" style="margin-bottom: 0;">
+            <a class="button button-primary" href="assets/Tunmbi_Okediran_Resume.pdf" target="_blank" rel="noopener noreferrer">Download Resume</a>
+            <a class="button button-secondary" href="mailto:yourname@email.com">Email Me</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer id="contact">
+    <div class="container">
+      <p>
+        © 2026 Tunmbi Okediran · Built with GitHub Pages · Update the placeholder links, photo, and resume before publishing.
+      </p>
+    </div>
+  </footer>
+</body>
+</html>
